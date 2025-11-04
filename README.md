@@ -132,7 +132,6 @@ A PowerShell script that scans .CER certificate files, generates visual reports,
 - 📧 Optional email notifications with attachments (Use a local SMTP server with IP whitelisting)
 - 📧 Informations extracted from the certificates are publicaly available internally. No much point of encrypting the data or using SMTPS.
 - ⚡ Parallel processing support (PowerShell 7+)
-- 🎨 Modern dark-themed HTML interface
 
 ## Requirements
 
