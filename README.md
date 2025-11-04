@@ -110,13 +110,6 @@ $Trigger = New-ScheduledTaskTrigger -Daily -At 2am
 Register-ScheduledTask -TaskName "Export CA Certificates" -Action $Action -Trigger $Trigger -User "DOMAIN\ServiceAccount"
 ```
 
-## Integration with Splunk
-
-Configure Splunk to monitor the output directory:
-1. Add a monitor input for `C:\ExportedCerts\*.cer`
-2. Set up parsing rules for certificate expiration dates
-3. Create alerts for certificates expiring soon
-
 ## Notes
 
 - !!! The script removes all existing `.cer` files in the output folder before exporting !!!
