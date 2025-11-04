@@ -1,6 +1,3 @@
-# PSExportAllCerts
-2 x PowerShell scripts to export certficates from Windows CA server and create a report to monitor certificates expirations
-
 # ################################################################################################################
 # Certificate Export Script for Monitoring (PSExportAllCerts.ps1)
 # ################################################################################################################
@@ -32,17 +29,17 @@ It does export .CER files as Base64 format.
 
 ### Auto-detect CA (Interactive)
 ```powershell
-.\ExportAllCerts_SR.ps1
+.\PSExportAllCerts.ps1
 ```
 
 ### Specify CA Server (Automation)
 ```powershell
-.\ExportAllCerts_SR.ps1 -CAServer "CASERVER01\MyCA"
+.\PSExportAllCerts.ps1 -CAServer "CASERVER01\MyCA"
 ```
 
 ### Custom Output Folder
 ```powershell
-.\ExportAllCerts_SR.ps1 -CAServer "ca.domain.com\Enterprise-CA" -OutputFolder "C:\ExportedCerts"
+.\PSExportAllCerts.ps1 -CAServer "ca.domain.com\Enterprise-CA" -OutputFolder "C:\ExportedCerts"
 ```
 
 ## Parameters
@@ -62,27 +59,27 @@ It does export .CER files as Base64 format.
 
 ### Keep All Certificates Including Duplicates
 ```powershell
-.\ExportAllCerts_SR.ps1 -AllowDuplicateOverwrite:$false
+.\PSExportAllCerts.ps1 -AllowDuplicateOverwrite:$false
 ```
 
 ### Export Certificates Valid for at Least 7 Days
 ```powershell
-.\ExportAllCerts_SR.ps1 -MinimumValidityHours 168
+.\PSExportAllCerts.ps1 -MinimumValidityHours 168
 ```
 
 ### Custom Exclusions
 ```powershell
-.\ExportAllCerts_SR.ps1 -ExcludeCommonNames @("TestCert", "TempUser") -ExcludePrefixes @("dev-", "test-")
+.\PSExportAllCerts.ps1 -ExcludeCommonNames @("TestCert", "TempUser") -ExcludePrefixes @("dev-", "test-")
 ```
 
 ### Include S/MIME and EFS Certificates
 ```powershell
-.\ExportAllCerts_SR.ps1 -ExcludeEmailProtection:$false -ExcludeEFS:$false
+.\PSExportAllCerts.ps1 -ExcludeEmailProtection:$false -ExcludeEFS:$false
 ```
 
 ### Full Automation Example
 ```powershell
-.\ExportAllCerts_SR.ps1 `
+.\PSExportAllCerts.ps1 `
     -CAServer "MYCA01\Corporate-CA" `
     -OutputFolder "C:\ExportedCerts" `
     -MinimumValidityHours 48 `
@@ -108,7 +105,7 @@ The script generates:
 ### Scheduled Task Example
 Create a scheduled task to run daily:
 ```powershell
-$Action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File C:\Scripts\ExportAllCerts_SR.ps1 -CAServer 'CA01\MyCA'"
+$Action = New-ScheduledTaskAction -Execute "PowerShell.exe" -Argument "-ExecutionPolicy Bypass -File C:\Scripts\PSExportAllCerts.ps1 -CAServer 'CA01\MyCA'"
 $Trigger = New-ScheduledTaskTrigger -Daily -At 2am
 Register-ScheduledTask -TaskName "Export CA Certificates" -Action $Action -Trigger $Trigger -User "DOMAIN\ServiceAccount"
 ```
