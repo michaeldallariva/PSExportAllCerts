@@ -180,7 +180,6 @@ The script generates three files in the `OutputFolder`:
    - Certificate statistics (Total, Valid, Expiring, Critical)
    - Sortable/filterable table
    - Click rows for detailed certificate information
-   - Modern dark-themed interface
 
 2. **CSV Report** - Spreadsheet-compatible data export with all certificate details
 
