@@ -3,7 +3,7 @@
 # ################################################################################################################
 
 
-A PowerShell script to automatically export certificates from a Windows Certificate Authority (CA) database to PEM format files for monitoring
+A set of 2 PowerShell scripts to automatically export certificates from a Windows Certificate Authority (CA) database to PEM format files for monitoring
 It does export .CER files as Base64 format.
 
 ## Prerequisites
